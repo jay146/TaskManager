@@ -1,0 +1,70 @@
+*{
+  box-sizing: border-box;
+}
+
+.div1
+{
+border: 2px solid blue;
+overflow-x:hidden;
+overflow-y: scroll;
+box-sizing: border-box;
+text-overflow: ellipsis;
+}
+
+.div2
+{
+position: relative;
+border: 2px solid red;
+border-style: solid;
+border-radius: 30px;
+border-width: 5px;
+overflow-x:scroll;
+overflow-y: scroll;
+text-overflow: ellipsis;
+box-sizing: border-box;
+}
+.rel1{
+ padding: auto;
+  margin: auto;
+  position: relative;
+  align-content: center;
+  max-width: 100vw;
+  max-height: 150vh;
+  box-sizing: border-box;
+  animation: move1 4s infinite;
+  font-weight: bolder;
+  font-size: xx-large;
+border-style: dashed;
+border-radius: 15px;
+}
+.rel2 {
+  margin: auto;
+  padding: auto;
+  align-content: center;
+  position: relative;
+  max-width: 110vw;
+  max-height: 150vh;
+  box-sizing: border-box;
+  animation: move2 4s infinite;
+  border-style: dotted;
+border-radius: 15px;
+font-weight: bolder;
+font-size: xx-large;
+}
+
+@keyframes move1 {
+  0%   { left: 0px; top: 0px;    background: blue;}
+  25%  { left: 100px;top: 0px;    background: yellow;}
+  50%  { left: 100px;top: 100px;  background:blue ;}
+  75%  { left: 0px; top: 0px; background:yellow;}
+  100% {  left: 0px;top: 0px;   background: blue;}
+}
+@keyframes move2 {
+  0%   { left:  0px;  top: 0px; background:yellow;}
+  25%  { left: 100px; top: 0px;  background: blue;}
+  50%  { left: 100px;top: 100px; background: yellow;}
+  75%  {left: 0px; top: 0px; background: blue;}
+  100% {left: 0px; top: 0px;  background: yellow;}
+}
+
+

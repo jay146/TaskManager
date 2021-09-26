@@ -1,0 +1,60 @@
+<nav class="nav navbar-expand-sm bg-warning">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a routerLink="/" >HOME</a></li>
+<li class="breadcrumb-item">Dashboard</li>
+</ol>
+</nav>
+<h5 class="text-dark  pt-2  mt-2 mb-4">Dashboard</h5>
+<div class="row">
+
+<div class="col-sm-3 pb-3" style="background-color: pink">
+
+  <div class="row">
+<div class="col-sm-11  text-center text-capitalize mx-2 fs-5 fw-bold bg-dark" style="color: blueviolet;">
+  {{Designation}}
+</div>
+<div class="col-11 mt-3">
+<img src="assets/jkimage.jpg" width="100px">
+</div>
+<div class="col-12 text text-center pt-2 pb-2">
+{{Username}}
+</div>
+<div class="col-12 text-center pt-2 pb-3 fs-4 fw-bold bg-dark" style="color: blueviolet;">
+Team summary
+</div>
+<div class="col-12 mb-3">
+<ul class="list-group">
+<li class="list-group-item">No of team members
+<span class="badge bg-primary rounded-pill" style="font-size: 13px">{{NoOfTeamMembers }}</span>
+</li>
+<li class="list-group-item"> Total cost of all products
+  <span class="badge bg-primary" style="font-size: 13px">{{TotalCostOfAllProjects }}</span>
+</li>
+<li class="list-group-item"> Pending tasks
+  <span class="badge badge-pill bg-primary"style="font-size: 13px">{{PendingTasks }}</span>
+</li>
+<li class="list-group-item">Upcoming projects
+  <span class=" badge badge-pill bg-primary"style="font-size: 13px">{{UpComingProjects }}</span>
+</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="col-sm-6" style="background-color: grey;">BOX-2
+  <input type="text" placeholder="second box">
+</div>
+
+<div class="col-sm-3" style="background-color: blueviolet;">BOX-3
+  <input type="text" placeholder="third box">
+</div>
+
+
+</div>
+
