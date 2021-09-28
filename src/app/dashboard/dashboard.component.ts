@@ -19,33 +19,61 @@ export class DashboardComponent implements OnInit {
   AvailableFunds: number = 0;
 
   Clients: string[] = [];
-  Projects: string[] = [];
+  Projects:string[] = [];
   Years: number[] = [];
   TeamMembersSummary: any = [];
   Accdata:any=[];
 
+  onprojectsclick($event:any)
+{
 
+//console.log($event.target.innerHTML);
+if($event.target.innerHTML=="Project-A")
+  {
 
-  constructor() { }
-
-  ngOnInit() {
+    this.ProjectCost = 1;
+    this.CurrentExpenditure = 10000;
+    this.AvailableFunds = 1000000;
+    }
+    else if($event.target.innerHTML=="Project-B")
+    {
+    this.ProjectCost = 2;
+    this.CurrentExpenditure = 20000;
+    this.AvailableFunds = 200000;
+    }
+  else if($event.target.innerHTML=="Project-C")
+  {
+    this.ProjectCost = 3;
+    this.CurrentExpenditure = 30000;
+    this.AvailableFunds = 300000;
+    }
+   else if($event.target.innerHTML=="Project-D")
+  {
+    this.ProjectCost = 4;
+    this.CurrentExpenditure = 96788;
+    this.AvailableFunds = 52536;
+    }
+}
+constructor() { }
+ngOnInit() {
   this.Designation='Team Leader';
   this.Username = 'Jayakrishna Surampudi';
   this.NoOfTeamMembers = 146;
   this.TotalCostOfAllProjects = 240;
   this.PendingTasks = 15;
   this.UpComingProjects = 2;
-  this.ProjectCost = 2113507;
-  this.CurrentExpenditure = 96788;
-  this.AvailableFunds = 52536;
+
+
+this.Projects=["Project-A","Project-B","Project-C","Project-D","Project-Z"];
+
   this.Clients=["hcl","google","wipro"];
-  this.Projects=["Project-A","Project-B","Project-C","Project-D","Project-Z"];
-  for(var i=2019;i>=2010;i--){
-    if(i==2017){
-     break;
-    }
-    this.Years.push(i);
-  }
+  //this.Projects=["Project-A","Project-B","Project-C","Project-D","Project-Z"];
+  //for(var i=2019;i>=2010;i--){
+    //if(i==2017){
+     //break;
+    //}
+    //this.Years.push(i);
+  //}
 
 this.TeamMembersSummary=[ {Region:"East",TeamMembersCount:10,TemporaryUnavailableMembers:5},
                           {Region:"West",TeamMembersCount:20,TemporaryUnavailableMembers:6},
@@ -70,7 +98,7 @@ this.Accdata=[
     {Id:2,Name:"bmw",Status:"busy"}
    ]
 },
-  {region:"Wast", members:
+  {region:"West", members:
    [{Id:1,Name:"ford",Status:"available"},
     {Id:2,Name:"bmw",Status:"busy"}
    ]
@@ -78,5 +106,6 @@ this.Accdata=[
 ];
 
 
-          }
-        }
+
+}
+}

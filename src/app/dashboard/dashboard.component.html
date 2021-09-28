@@ -62,7 +62,7 @@ Team summary
               data-toggle="dropdown">
               ProjectA</button>
                                 <div class="dropdown-menu justify-content-center" id="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#" *ngFor="let project of Projects">{{project}}</a>
+                                  <a class="dropdown-item" href="#" *ngFor="let project of Projects" onclick="return false" (click)="onprojectsclick($event)">{{project}}</a>
 
                                 </div>
       </div>
@@ -127,13 +127,21 @@ Team summary
       <div class="accordion" id="accordion1">
         <!-- east ,west north and south starts -->
         <div class="card" *ngFor="let m of Accdata;let z=index">
+                                                               <div *ngIf="z!=0"> <!--card heaDER AND CARD BODY SHD BE INSIDE THIS DIV TAG-->
                <div class="card-header bg-dark">
-                  <h1 class="mb-0 mt-0 text-danger">
-        <button class="btn btn-success" type="button" data-toggle="collapse" [attr.data-target]="'#cardbody'+z">{{m.region}}</button>
-                  </h1>
+                  <h1 class="mb-0 mt(-0 text-danger">
+        <button class="btn btn-success"
+         type="button"
+         data-toggle="collapse"
+         [attr.data-target]="'#cardbody'+z">
+         {{m.region}}</button>
+            </h1>
               </div>
-          <div [id]="'cardbody'+z" class="collapse"
-           data-parent="#accordion1">
+
+    <div [id]="'cardbody'+z"
+          class="collapse"
+data-parent="#accordion1"
+[ngClass]="(z==0)?'show':''">
           <div class="card-body">
    <table class="table">
           <thead>
@@ -145,14 +153,15 @@ Team summary
           </thead>
                   <tbody>
                     <tr *ngFor="let y of m.members">
-                    <h1>{{y.Id}}</h1>
+                    <td>{{y.Id}}</td>
                     <td>{{y.Name}}</td>
-                    <td>{{y.Status}}</td>
+                    <td [style.color]="(y.Status=='busy')? 'red':'green'">{{y.Status}}</td>
                     </tr>
                   </tbody>
     </table>
             </div>
 
+          </div>
           </div>
         </div>
 </div>
