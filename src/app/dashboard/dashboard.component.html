@@ -41,9 +41,8 @@ Team summary
 </ul>
 <div class="col-12 text-center pt-2 pb-2 text-center pt-2 fs-4 fw-bold" style="color: blueviolet;">CLIENTS</div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">hcl infotech ltd</li>
-    <li class="list-group-item">hinduja infotech ltd</li>
-    <li class="list-group-item">wipro infotech ltd</li>
+    <li class="list-group-item" *ngFor="let client of Clients">{{client}}</li>
+
  </ul>
 </div>
 </div>
@@ -63,10 +62,8 @@ Team summary
               data-toggle="dropdown">
               ProjectA</button>
                                 <div class="dropdown-menu justify-content-center" id="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">PROJECT-A</a>
-                                  <a class="dropdown-item" href="#">PROJECT-B</a>
-                                  <a class="dropdown-item" href="#">PROJECT-C</a>
-                                  <a class="dropdown-item" href="#">PROJECT-D</a>
+                                  <a class="dropdown-item" href="#" *ngFor="let project of Projects">{{project}}</a>
+
                                 </div>
       </div>
           <div class="col-6 text-end">
@@ -76,10 +73,8 @@ Team summary
             data-toggle="dropdown">
             Years</button>
                                 <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">2018</a>
-                                  <a class="dropdown-item" href="#">2019</a>
-                                  <a class="dropdown-item" href="#">2020</a>
-                                  <a class="dropdown-item" href="#">2021</a>
+                                  <a class="dropdown-item" href="#" *ngFor="let year of Years">{{year}}</a>
+
                                 </div>
 
     </div>
@@ -106,266 +101,60 @@ Team summary
                                 </table>
 
 </div>
-      <div class="col-12  mx-auto mt-1 text-center  text-uppercase  pb-2 pt-2 mx-2 fs-5 fw-bold bg-dark" style="color: white;">
-      Team member summary
-      </div>
+      <div class="col-12  mx-auto mt-1 text-center  text-uppercase  pb-2 pt-2 mx-2 fs-5 fw-bold bg-dark" style="color: white;">Team member summary</div>
+
       <table class="table table-info">
         <tr>
           <th>Region</th>
           <th>Team Members Count</th>
           <th>Temporarily Unavailable Members</th>
         </tr>
-        <tr>
+<tr *ngFor="let tms of TeamMembersSummary">
           <td>
-            <b>East</b>
+            <b>{{tms.Region}}</b>
           </td>
-          <td>20</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>
-            <b>South</b>
-          </td>
-          <td>15</td>
-          <td>8</td>
-        </tr>
-        <tr>
-          <td>
-            <b>West</b>
-          </td>
-          <td>17</td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>
-            <b>North</b>
-          </td>
-          <td>15</td>
-          <td>6</td>
-        </tr>
-      </table>
-
-
+          <td>{{tms.TeamMembersCount}}</td>
+          <td>{{tms.TemporaryUnavailableMembers}}</td>
+</tr>
+</table>
 </div>
 
 
 
-<div class="col-lg-3" style="background-color: blueviolet;">BOX-3
-  <div class="col-12  mx-auto mt-1 text-center  text-uppercase  pb-2 pt-2 mx-2 fs-5 fw-bold bg-dark" style="color: white;">
-    Team members
-    </div>
-    <div class="col-lg-12 pt-2">
+<div class="col-lg-3" style="background-color: blueviolet;">
+<div class="col-12 mx-auto mt-1 text-center  text-uppercase  pb-2 pt-2 mx-2 fs-5 fw-bold bg-dark" style="color: white;">Team members</div>
+<div class="col-lg-12 pt-2">
       <div class="accordion" id="accordion1">
-        <!-- east starts -->
-        <div class="card">
-          <div class="card-header bg-secondary" id="card1">
-            <h2 class="mb-0">
-              <button
-                class="btn btn-link text-white"
-                type="button"
-                data-toggle="collapse"
-                data-target="#cardbody1">
-                East
-              </button>
-            </h2>
-          </div>
-          <div id="cardbody1" class="collapse show" data-parent="#accordion1">
-            <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Ford</td>
-                    <td><i class="fa fa-phone"></i> Available</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Miller</td>
-                    <td><i class="fa fa-phone"></i> Available</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Jones</td>
-                    <td><i class="fa fa-user-times"></i> Busy</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>James</td>
-                    <td><i class="fa fa-user-times"></i> Busy</td>
-                  </tr>
-                </tbody>
-              </table>
+        <!-- east ,west north and south starts -->
+        <div class="card" *ngFor="let m of Accdata;let z=index">
+               <div class="card-header bg-dark">
+                  <h1 class="mb-0 mt-0 text-danger">
+        <button class="btn btn-success" type="button" data-toggle="collapse" [attr.data-target]="'#cardbody'+z">{{m.region}}</button>
+                  </h1>
+              </div>
+          <div [id]="'cardbody'+z" class="collapse"
+           data-parent="#accordion1">
+          <div class="card-body">
+   <table class="table">
+          <thead>
+            <tr><th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+
+          </thead>
+                  <tbody>
+                    <tr *ngFor="let y of m.members">
+                    <h1>{{y.Id}}</h1>
+                    <td>{{y.Name}}</td>
+                    <td>{{y.Status}}</td>
+                    </tr>
+                  </tbody>
+    </table>
             </div>
+
           </div>
         </div>
-<!-- east ends -->
- <!-- south starts -->
- <div class="card">
-  <div class="card-header bg-secondary" id="card2">
-    <h2 class="mb-0">
-      <button
-        class="btn btn-link text-white"
-        type="button"
-        data-toggle="collapse"
-        data-target="#cardbody2"
-      >
-        South
-      </button>
-    </h2>
-  </div>
-  <div id="cardbody2" class="collapse" data-parent="#accordion1">
-    <div class="card-body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Jones</td>
-            <td><i class="fa fa-user-times"></i> Busy</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Miller</td>
-            <td><i class="fa fa-phone"></i> Available</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ford</td>
-            <td><i class="fa fa-user-times"></i> Busy</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>James</td>
-            <td><i class="fa fa-phone"></i> Available</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 </div>
-<!-- south ends -->
-
-<!-- west starts -->
-<div class="card">
-  <div class="card-header bg-secondary" id="card3">
-    <h2 class="mb-0">
-      <button
-        class="btn btn-link text-white"
-        type="button"
-        data-toggle="collapse"
-        data-target="#cardbody3"
-      >
-        West
-      </button>
-    </h2>
-  </div>
-  <div id="cardbody3" class="collapse" data-parent="#accordion1">
-    <div class="card-body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Jones</td>
-            <td><i class="fa fa-user-times"></i> Busy</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Miller</td>
-            <td><i class="fa fa-phone"></i> Available</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ford</td>
-            <td><i class="fa fa-user-times"></i> Busy</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>James</td>
-            <td><i class="fa fa-phone"></i> Available</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-<!-- west ends -->
-
-<!-- north starts -->
-<div class="card">
-  <div class="card-header bg-secondary" id="card4">
-    <h2 class="mb-0">
-      <button
-        class="btn btn-link text-white"
-        type="button"
-        data-toggle="collapse"
-        data-target="#cardbody4"
-      >
-        North
-      </button>
-    </h2>
-  </div>
-  <div id="cardbody4" class="collapse" data-parent="#accordion1">
-    <div class="card-body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Jones</td>
-            <td><i class="fa fa-user-times"></i> Busy</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Miller</td>
-            <td><i class="fa fa-phone"></i> Available</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ford</td>
-            <td><i class="fa fa-user-times"></i> Busy</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>James</td>
-            <td><i class="fa fa-phone"></i> Available</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-<!-- north ends -->
-
-
-
-
-</div>
-
 </div> <!--h1> for insert 3 column in a row</h1-->
 
