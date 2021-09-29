@@ -2,10 +2,15 @@
 <ol class="breadcrumb">
 <li class="breadcrumb-item"><a routerLink="/" >HOME</a></li>
 <li class="breadcrumb-item">Dashboard</li>
+
 </ol>
+
 </nav>
 
-<h5 class="text-dark  pt-2  mt-2 mb-4">Dashboard</h5>
+
+<h5 class="text-dark  pt-2  mt-2 mb-4">Dashboard </h5>
+<h6>Today date is:{{today | date : "d/M/Y" }}</h6>
+
 <div class="row">
 
 <div class="col-sm-3 pb-3" style="background-color: pink">
@@ -61,7 +66,7 @@ Team summary
               type="button"
               data-toggle="dropdown">
               ProjectA</button>
-                                <div class="dropdown-menu justify-content-center" id="dropdownMenuButton">
+                                <div class="dropdown-menu" id="dropdownMenuButton">
                                   <a class="dropdown-item" href="#" *ngFor="let project of Projects" onclick="return false" (click)="onprojectsclick($event)">{{project}}</a>
 
                                 </div>
@@ -73,7 +78,18 @@ Team summary
             data-toggle="dropdown">
             Years</button>
                                 <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#" *ngFor="let year of Years">{{year}}</a>
+                            <a class="dropdown-item" href="#" *ngFor="let year of Years">
+                                    <span [ngSwitch]="year">
+                                              <span *ngSwitchCase= "'2025'"  style="color:red;">{{year}}</span>
+                                              <span *ngSwitchCase= "'2024'"  style="color: orange;">{{year}}</span>
+                                              <span *ngSwitchDefault style="color: aqua;">{{year}}</span>
+
+
+
+                                    </span>
+
+
+                            </a>
 
                                 </div>
 
@@ -127,7 +143,7 @@ Team summary
       <div class="accordion" id="accordion1">
         <!-- east ,west north and south starts -->
         <div class="card" *ngFor="let m of Accdata;let z=index">
-                                                               <div *ngIf="z!=0"> <!--card heaDER AND CARD BODY SHD BE INSIDE THIS DIV TAG-->
+            <div *ngIf="z==0"> <!--card heaDER AND CARD BODY SHD BE INSIDE THIS DIV TAG--><!--it wont show east card-->
                <div class="card-header bg-dark">
                   <h1 class="mb-0 mt(-0 text-danger">
         <button class="btn btn-success"
@@ -143,22 +159,37 @@ Team summary
 data-parent="#accordion1"
 [ngClass]="(z==0)?'show':''">
           <div class="card-body">
-   <table class="table">
-          <thead>
-            <tr><th>ID</th>
-                <th>Name</th>
-                <th>Status</th>
-            </tr>
+            <div *ngIf="z==0 then firsttemplate;else secondtemplate">
 
-          </thead>
-                  <tbody>
-                    <tr *ngFor="let y of m.members">
-                    <td>{{y.Id}}</td>
-                    <td>{{y.Name}}</td>
-                    <td [style.color]="(y.Status=='busy')? 'red':'green'">{{y.Status}}</td>
-                    </tr>
-                  </tbody>
-    </table>
+            </div>
+            <ng-template  #firsttemplate>
+              <div class="card"*ngFor="let q of m.members">
+              <div class="card-header bg-primary text-white">#{{q.Id}} {{q.Name}}
+                            </div>
+                            <div class="card-body">{{q.Status}}</div>
+
+              </div>
+            </ng-template>
+
+            <ng-template #secondtemplate>
+              <table class="table">
+                <thead>
+                  <tr><th>ID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                  </tr>
+
+                </thead>
+                        <tbody>
+                          <tr *ngFor="let y of m.members">
+                          <td>{{y.Id}}</td>
+                          <td>{{y.Name}}</td>
+                          <td [style.color]="(y.Status=='busy')? 'red':'green'">{{y.Status}}</td>
+                          </tr>
+                        </tbody>
+          </table>
+
+            </ng-template>
             </div>
 
           </div>
