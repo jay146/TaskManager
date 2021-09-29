@@ -1,4 +1,5 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { DatePipe } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
   Years: number[] = [];
   TeamMembersSummary: any = [];
   Accdata:any=[];
+  today:Date | undefined;
 
   onprojectsclick($event:any)
 {
@@ -62,18 +64,17 @@ ngOnInit() {
   this.TotalCostOfAllProjects = 240;
   this.PendingTasks = 15;
   this.UpComingProjects = 2;
+this.today=new Date;
 
 
 this.Projects=["Project-A","Project-B","Project-C","Project-D","Project-Z"];
 
   this.Clients=["hcl","google","wipro"];
   //this.Projects=["Project-A","Project-B","Project-C","Project-D","Project-Z"];
-  //for(var i=2019;i>=2010;i--){
-    //if(i==2017){
-     //break;
-    //}
-    //this.Years.push(i);
-  //}
+  for(var i=2020 ;i<=2025;i++){
+
+    this.Years.push(i);
+  }
 
 this.TeamMembersSummary=[ {Region:"East",TeamMembersCount:10,TemporaryUnavailableMembers:5},
                           {Region:"West",TeamMembersCount:20,TemporaryUnavailableMembers:6},
